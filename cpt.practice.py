@@ -25,15 +25,24 @@ def calc_median(list_of_numbers):
         return found_median
 
 def calc_mode(list_of_numbers):
-    
+    frequency = {}
+    for num in list_of_numbers:
+        frequency[num] = frequency.get(num, 0) + 1
+        max_nums = max(frequency.values())
+        modes = [key for key, count in frequency.items() if count == max_nums]
+    return modes, max_nums
 
-amt_of_nums = int(input("Enter the amounts of values you would like to input into your list: "))
+while True:
+    amt_of_nums = int(input("Enter the amounts of values you would like to input into your list: "))
 
-for num in range(amt_of_nums):
-    num = int(input("Enter your value: "))
-    list_of_nums.append(num)
+    for num in range(amt_of_nums):
+        num = int(input("Enter your value: "))
+        list_of_nums.append(num)
 
-print(f"Are your values correct?\n{list_of_nums}")
+    confirm = input(f"Are your values correct? (yes/no)\n{list_of_nums}\n").strip().lower()
+    if confirm == "yes":
+        break
+
 print("Enter desired calculation:")
 while True:
     selection = input("Mean\nMedian\nMode\nRange\n").strip().lower()
