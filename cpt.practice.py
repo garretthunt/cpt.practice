@@ -1,9 +1,10 @@
-import math
+def main():
+    import math
 list_of_nums = []
 
 def calc_mean(list_of_numbers):
     total = 0
-    for num in list_of_nums:
+    for num in list_of_numbers:
         total += num
         mean = total / len(list_of_nums)
     return mean
@@ -16,7 +17,7 @@ def calc_median(list_of_numbers):
         in_list = True
     if in_list == True:
         mid = len(list_of_nums) // 2
-        print(sorted_list[mid])
+        return sorted_list[mid]
     elif in_list == False:
         mid = len(sorted_list) // 2
         bottom = sorted_list[mid - 1]
@@ -66,3 +67,5 @@ if selection == "median":
 if selection == "mode":
     result = calc_mode(list_of_nums)
     print(result)
+
+main()
